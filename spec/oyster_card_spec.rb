@@ -22,7 +22,12 @@ describe OysterCard do
 
     it "Touch in oyster should show true for in_journey?" do
         subject.touch_in
-        expect{subject.in_journey?}.to be true
+        expect(subject.in_journey?).to be true
     end
+
+    it "Touch out oyster should show false for in_journey?" do
+        subject.touch_out
+        expect(subject.in_journey?).to be false
+    end    
 
 end    
