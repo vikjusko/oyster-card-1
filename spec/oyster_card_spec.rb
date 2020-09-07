@@ -15,4 +15,14 @@ describe OysterCard do
        expect{subject.top_up(90) }.to raise_error("Maximum Limit")      
     end 
 
+    it "Deduct £2 from oyster card" do
+        subject.top_up(10)
+        expect{subject.deduct(5)}.to change{(subject.balance)}.from(10).to(5)
+    end
+
+    it "Touch in oyster should show true for in_journey?" do
+        subject.touch_in
+        expect{subject.in_journey?}.to be true
+    end
+
 end    
