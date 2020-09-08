@@ -17,7 +17,7 @@ describe OysterCard do
 
     it "Deduct £2 from oyster card" do
         subject.top_up(10)
-        expect{subject.deduct(5)}.to change{(subject.balance)}.from(10).to(5)
+        expect{subject.send(:deduct, 5)}.to change{(subject.balance)}.from(10).to(5)
     end
 
     it "Touch in oyster should show true for in_journey?" do
@@ -34,5 +34,9 @@ describe OysterCard do
     it "does oyster card show error if there is no balance" do
         expect{subject.touch_in}.to raise_error"No Money"
     end
+
+    it 'we have the correct balance after touching out' do 
+      expect {subject.touch_out}.to change{(subject.balance)}.by(-(OysterCard::MINIMUM_LIMIT))
+    end 
 
 end    
