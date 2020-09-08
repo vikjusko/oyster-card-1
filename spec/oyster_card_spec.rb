@@ -1,6 +1,8 @@
 require 'oyster_card'
 
 describe OysterCard do
+    let(:station) { double :station }
+
     it "Balance of oyster card equals 0" do
         expect(subject.balance).to eq 0
     end
@@ -22,7 +24,7 @@ describe OysterCard do
 
     it "Touch in oyster should show true for in_journey?" do
         subject.top_up(10)
-        subject.touch_in
+        subject.touch_in(station)
         expect(subject.in_journey?).to be true
     end
 
@@ -32,11 +34,17 @@ describe OysterCard do
     end    
 
     it "does oyster card show error if there is no balance" do
-        expect{subject.touch_in}.to raise_error"No Money"
+        expect{subject.touch_in(station)}.to raise_error"No Money"
     end
 
     it 'we have the correct balance after touching out' do 
       expect {subject.touch_out}.to change{(subject.balance)}.by(-(OysterCard::MINIMUM_LIMIT))
     end 
+
+    it "store entry station" do
+        subject.top_up(10)
+        subject.touch_in(station)
+    expect(subject.entry_station).to eq station
+    end
 
 end    
