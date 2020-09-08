@@ -21,6 +21,7 @@ describe OysterCard do
     end
 
     it "Touch in oyster should show true for in_journey?" do
+        subject.top_up(10)
         subject.touch_in
         expect(subject.in_journey?).to be true
     end
@@ -29,5 +30,9 @@ describe OysterCard do
         subject.touch_out
         expect(subject.in_journey?).to be false
     end    
+
+    it "does oyster card show error if there is no balance" do
+        expect{subject.touch_in}.to raise_error"No Money"
+    end
 
 end    
