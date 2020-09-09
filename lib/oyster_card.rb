@@ -1,3 +1,5 @@
+require_relative "station"
+
 class OysterCard
   attr_reader :balance, :entry_station, :list_of_journey, :current_journey
   OYSTER_LIMIT = 90
