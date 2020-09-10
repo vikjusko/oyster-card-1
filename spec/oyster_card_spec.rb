@@ -30,41 +30,41 @@ describe OysterCard do
   end
 
   describe "#touch_in" do
-    it "Touch in oyster should show true for in_journey?" do
-      card.touch_in(entry_station)
-      expect(card.in_journey?).to be true
-    end
+    # it "Touch in oyster should show true for in_journey?" do
+    #   card.touch_in(entry_station)
+    #   expect(card.in_journey?).to be true
+    # end
 
     it "does oyster card show error if there is no balance" do
       expect { subject.touch_in(entry_station) }.to raise_error "No Money"
     end
 
-    it "store entry station" do
-      card.touch_in(entry_station)
-      expect(card.entry_station).to eq entry_station
-    end
+    # it "store entry station" do
+    #   card.touch_in(entry_station)
+    #   expect(card.entry_station).to eq entry_station
+    # end
   end
 
   describe "#touch_out" do
-    it "Touch out oyster should show false for in_journey?" do
-      subject.touch_out(exit_station)
-      expect(subject.in_journey?).to be false
-    end
+    # it "Touch out oyster should show false for in_journey?" do
+    #   subject.touch_out(exit_station)
+    #   expect(subject.in_journey?).to be false
+    # end
 
     it "we have the correct balance after touching out" do
       expect { subject.touch_out(exit_station) }.to change { (subject.balance) }.by(-(OysterCard::MINIMUM_LIMIT))
     end
   end
 
-  describe "adds entry and exit stations to a hash" do
-    it "store entry station at touch in" do
-      card.touch_in(entry_station)
-      expect(card.current_journey).to have_value(entry_station)
-    end
+  # describe "adds entry and exit stations to a hash" do
+  #   it "store entry station at touch in" do
+  #     card.touch_in(entry_station)
+  #     expect(card.current_journey).to have_value(entry_station)
+  #   end
 
-    it "store exit station at touch in" do
-      card.touch_out(exit_station)
-      expect(card.current_journey).to have_value(exit_station)
-    end
-  end
+  #   it "store exit station at touch in" do
+  #     card.touch_out(exit_station)
+  #     expect(card.current_journey).to have_value(exit_station)
+  #   end
+  # end
 end

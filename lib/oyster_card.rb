@@ -22,31 +22,31 @@ class OysterCard
     @balance -= amount
   end
 
-  def in_journey?
-    !!@entry_station
-  end
+  # def in_journey?
+  #   !!@entry_station
+  # end
 
   def touch_in(entry_station)
-    journey_history
-    @entry_station = entry_station
-    @current_journey["entry_station"] = entry_station
+    # journey_history
+    # @entry_station = entry_station
+    # @current_journey["entry_station"] = entry_station
     fail "No Money" if @balance < MINIMUM_LIMIT
   end
 
   def touch_out(exit_station)
-    @entry_station = nil
-    @current_journey["exit_station"] = exit_station
+    # @entry_station = nil
+    # @current_journey["exit_station"] = exit_station
     deduct(MINIMUM_LIMIT)
   end
 
-  def journey_history
-    if @current_journey["entry_station"] == nil && @current_journey["exit_station"] == nil
-      return
-    else
-      @list_of_journey << @current_journey
-      @current_journey = { "entry_station" => nil, "exit_station" => nil }
-    end
-  end
+  # def journey_history
+  #   if @current_journey["entry_station"] == nil && @current_journey["exit_station"] == nil
+  #     return
+  #   else
+  #     @list_of_journey << @current_journey
+  #     @current_journey = { "entry_station" => nil, "exit_station" => nil }
+  #   end
+  # end
 
   private :deduct
 end
