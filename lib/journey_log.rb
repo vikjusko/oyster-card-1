@@ -8,8 +8,8 @@ class JourneyLog
     @journey_log = []
   end
 
-  def start(station)
-    @journey.start(station)
+  def start(station, zone)
+    @journey.start(station, zone)
   end 
 
   def current_journey
@@ -22,8 +22,8 @@ class JourneyLog
     end 
   end 
 
-  def finish(station)
-    @journey.stations['exit_station'] = station 
+  def finish(station, zone)
+    @journey.end(station, zone)  
     # @journey_log << @journey.stations
     # @journey = Journey.new
   end 
