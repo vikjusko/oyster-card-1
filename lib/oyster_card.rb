@@ -8,9 +8,9 @@ class OysterCard
 
   def initialize(balance = BALANCE)
     @balance = balance
-    @entry_station = nil
-    @list_of_journey = []
-    @current_journey = { "entry_station" => nil, "exit_station" => nil }
+    #@entry_station = nil
+    #@list_of_journey = []
+    #@current_journey = { "entry_station" => nil, "exit_station" => nil }
   end
 
   def top_up(amount)

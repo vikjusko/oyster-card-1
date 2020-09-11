@@ -5,21 +5,21 @@ describe JourneyLog do
   describe '#start' do
     it 'starts a new journey' do 
       subject.start(station)
-      expect(subject.journey.entry_station).to eq station 
+      expect(subject.journey.stations["entry_station"]).to eq station 
     end 
   end 
 
   describe '#current_journey' do
     it 'returns incomplete journey (same as just the entry station)' do
       subject.start(station)
-      expect(subject.send(:current_journey)).to eq subject.travelling_journey['start_station'] = station
+      expect(subject.send(:current_journey)).to eq subject.journey.stations["entry_station"] = station
     end 
   end
 
   describe '#finish' do
     it 'adds exist station to travelling journey hash' do
       subject.finish(station)
-      expect(subject.travelling_journey['exit_station']).to eq station 
+      expect(subject.journey.stations["exit_station"]).to eq station 
     end
   end 
 

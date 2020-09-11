@@ -5,12 +5,12 @@ describe Journey do
 
  it 'store start of journey' do
     subject.start(station)
-    expect(subject.entry_station).to eq station
+    expect(subject.stations["entry_station"]).to eq station
  end    
 
  it 'store end of journey' do
    subject.end(station) 
-   expect(subject.finish_station).to eq station 
+   expect(subject.stations["exit_station"]).to eq station 
  end
 
  it 'Checks to see if journey is completed' do

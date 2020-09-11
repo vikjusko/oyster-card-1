@@ -1,19 +1,24 @@
 
 
 class Journey  
-  attr_reader :entry_station, :finish_station
+  attr_reader :stations
   MINIMUM_FARE = 1
   PENALTY_FARE = 6
+
+  def initialize
+    @stations = {'entry_station' => nil, 'exit_station' => nil}
+  end 
+
   def start(station)
-    @entry_station = station
+    @stations['entry_station'] = station
   end  
 
   def end(station)
-    @finish_station = station
+    @stations['exit_station'] = station
   end 
 
   def complete?
-   !! @entry_station && !! @finish_station
+   !! @stations['entry_station'] && !! @stations['exit_station']
   end  
 
   def fare 
@@ -21,3 +26,8 @@ class Journey
   end
 
 end
+
+=begin
+replace the instance variables of entry station and exit station 
+with an instance variable called stations that is a hash table
+=end 

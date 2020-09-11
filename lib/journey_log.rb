@@ -4,7 +4,7 @@ class JourneyLog
   attr_reader :journey, :travelling_journey, :journey_log 
   def initialize(journey = Journey.new)
     @journey = journey
-    @travelling_journey = {}
+    #@travelling_journey = {}
     @journey_log = []
   end
 
@@ -13,25 +13,24 @@ class JourneyLog
   end 
 
   def current_journey
-    !!@journey.entry_station == true ? @travelling_journey['start_station'] = @journey.entry_station : @journey = Journey.new
+    #!!@journey.stations['entry_station'] == true ? @travelling_journey['start_station'] = @journey.entry_station : @journey = Journey.new
     # @travelling_journey
-    # if !!@journey.entry_station == true do 
-    #   @travelling_journey['start_station'] = @journey.entry_station
-    # else
-    #   @journey = Journey.new
-    #   break
-    # end 
+    if !!journey.stations['entry_station'] == true  
+      journey.stations['entry_station']
+    else
+      @journey = Journey.new
+    end 
   end 
 
   def finish(station)
-    self.current_journey
-    @travelling_journey['exit_station'] = station 
-    @journey_log << @travelling_journey
-    @journey = Journey.new
+    @journey.stations['exit_station'] = station 
+    # @journey_log << @journey.stations
+    # @journey = Journey.new
   end 
 
   def journeys
-    @journey_log
+    @journey_log << @journey.stations.dup
+    @journey_log.dup
   end 
 
   private :current_journey

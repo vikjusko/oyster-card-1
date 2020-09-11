@@ -10,9 +10,9 @@ describe OysterCard do
       expect(subject.balance).to eq 0
     end
 
-    it "checks that the list_of_journey is empty by default" do
-      expect(card.list_of_journey).to be_empty
-    end
+  #   it "checks that the list_of_journey is empty by default" do
+  #     expect(card.list_of_journey).to be_empty
+  #   end
   end
 
   describe "#top_up" do
